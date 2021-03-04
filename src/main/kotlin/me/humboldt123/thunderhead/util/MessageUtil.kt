@@ -5,7 +5,7 @@ import me.humboldt123.thunderhead.info.EmojiInfo
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 
-object MessageDSL {
+object MessageUtil {
     fun error(string: String) : MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.red).setTitle("${EmojiInfo.warn} $string").build()
     }

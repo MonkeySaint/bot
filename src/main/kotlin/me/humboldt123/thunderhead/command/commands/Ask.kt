@@ -2,10 +2,9 @@ package me.humboldt123.thunderhead.command.commands
 
 import me.humboldt123.thunderhead.command.Command
 import me.humboldt123.thunderhead.info.AskInfo
-import me.humboldt123.thunderhead.util.MessageDSL
+import me.humboldt123.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.objecthunter.exp4j.ExpressionBuilder
-import java.io.File
 import java.lang.Exception
 import java.net.URL
 
@@ -13,13 +12,13 @@ import java.net.URL
 class Ask : Command("ask", "The Thunderhead contains near-infinite knowledge.", listOf("[question]", "[expresion]"), 1, listOf()) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (args.isEmpty()) {
-            event.message.channel.sendMessage(MessageDSL.error("You must ask a question to receive an answer.")).queue()
+            event.message.channel.sendMessage(MessageUtil.error("You must ask a question to receive an answer.")).queue()
         } else {
             val query = args.joinToString(" ")
             try {
                 // TODO: Add support for equations
                 val result: Double = ExpressionBuilder(query.replace("`", "").replace("x", "*", true)).build().evaluate()
-                event.message.channel.sendMessage(MessageDSL.answer(result.toString())).queue();
+                event.message.channel.sendMessage(MessageUtil.answer(result.toString())).queue();
             } catch (e: Exception) {
                 val answer = if (query.contains("scythe", true)) AskInfo.warn else AskInfo.answers.random()
                 // TODO: Strip and remove of markdown

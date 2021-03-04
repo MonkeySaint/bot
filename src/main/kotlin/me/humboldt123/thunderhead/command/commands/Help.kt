@@ -1,11 +1,11 @@
 package me.humboldt123.thunderhead.command.commands
 
-import me.humboldt123.thunderhead.Settings
 import me.humboldt123.thunderhead.command.Command
 import me.humboldt123.thunderhead.command.CommandManager
 import me.humboldt123.thunderhead.info.ColorInfo
 import me.humboldt123.thunderhead.info.HelpInfo
-import me.humboldt123.thunderhead.util.MessageDSL
+import me.humboldt123.thunderhead.util.MessageUtil
+import me.humboldt123.thunderhead.util.getPrefix
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
@@ -26,24 +26,24 @@ class Help : Command("help", "A list of commands.", listOf("[command?]"), 1, lis
         }
     }
 
-    fun getCommandEmbed(command: Command?): MessageEmbed {
+    private fun getCommandEmbed(command: Command?): MessageEmbed {
         return if (command != null)
             EmbedBuilder()
             .setTitle(command.name)
             .setColor(ColorInfo.discord)
             .setDescription(
                 "**Description:** ${command.description} " +
-                        if (command.syntax.isNotEmpty()) "\n**Use(s):**\n - `${Settings.PREFIX + command.name} ${command.syntax.joinToString("`\n - `${Settings.PREFIX + command.name} ")}`" else ""
+                        if (command.syntax.isNotEmpty()) "\n**Use(s):**\n - `${getPrefix() + command.name} ${command.syntax.joinToString("`\n - `${getPrefix() + command.name} ")}`" else ""
             ).build()
-        else MessageDSL.error("Not a valid command or alias.")
+        else MessageUtil.error("Not a valid command or alias.")
     }
 
-    fun getCommandListEmbed(page: Int?): MessageEmbed {
+    private fun getCommandListEmbed(page: Int?): MessageEmbed {
         if (HelpInfo.page.size-1 < page ?: 1 || page ?: 1 < 0)
-            return MessageDSL.error("Cannot find command at page $page")
+            return MessageUtil.error("Cannot find command at page $page")
         var description = ""
         CommandManager.commands.filter { it.page == page ?: 1 }.forEach {
-            description += "`${Settings.PREFIX}${it.name}`: ${it.description}\n"
+            description += "`${getPrefix()}${it.name}`: ${it.description}\n"
         }
         return EmbedBuilder()
             .setTitle(
@@ -55,7 +55,7 @@ class Help : Command("help", "A list of commands.", listOf("[command?]"), 1, lis
             .build()
     }
 
-    fun getCommand(i: String?): Command? {
+    private fun getCommand(i: String?): Command? {
         return CommandManager.commands.filter {
             it.name == i || (it.aliases.any { it == i })
         }.getOrNull(0)
