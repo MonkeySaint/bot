@@ -2,13 +2,9 @@ package me.humboldt123.thunderhead.util
 
 import com.google.gson.Gson
 import java.io.File
+import me.humboldt123.thunderhead.dataclass.config.Config
 
 val config: Config = Gson().fromJson(File("setting.json").readText(), Config::class.java)
-
-data class Config(
-    var token: String? = null,
-    var prefix: String? = null
-)
 
 fun getToken(): String {
     if (config.token.isNullOrEmpty())
