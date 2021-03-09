@@ -24,7 +24,7 @@ class Tetris : Command("tetrio", "utils", listOf("[user] <username>"), 1, listOf
                         .addField("Bio", result.data?.user?.bio ?: "Bio not set!", true)
                         .addField("Country", result.data?.user?.country ?: "Country hidden / unknown", true)
                         .addField("Friends", result.data?.user?.friend_count.toString(), true)
-                        .addField("Games Played / Games Won", result.data?.user?.gamesplayed.toString(), true)
+                        .addField("Games Played", result.data?.user?.gamesplayed.toString(), true)
                         .addField("Games Won", result.data?.user?.gameswon.toString(), true)
                         .addField("Game Time", "${TimeUnit.SECONDS.toHours(floor(result.data?.user?.gametime ?: 0.00).toLong())} Hours", true)
                         .setColor(Color.MAGENTA)
