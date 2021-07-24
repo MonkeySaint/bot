@@ -30,5 +30,8 @@ jobs:
       with:
         name: thunderhead
         path: ./build
-    - name: Gradle Cache
-      uses: burrunan/gradle-cache-action@v1
+    - name: Cache
+      uses: actions/cache@v2.1.6
+      with:
+       path: ./build
+       key: thunderheadd
