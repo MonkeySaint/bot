@@ -1,6 +1,6 @@
 package dev.skrub.thunderhead.command.commands
 
-import me.humboldt123.thunderhead.command.Command
+import dev.skrub.thunderhead.command.Command
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 @Suppress("Unused")

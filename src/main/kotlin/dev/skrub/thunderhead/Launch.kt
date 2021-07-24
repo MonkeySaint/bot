@@ -1,6 +1,6 @@
 package dev.skrub.thunderhead
 
-import me.humboldt123.thunderhead.util.getToken
+import dev.skrub.thunderhead.util.getToken
 
 object Launch {
     @JvmStatic

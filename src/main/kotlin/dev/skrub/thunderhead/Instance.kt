@@ -1,6 +1,6 @@
 package dev.skrub.thunderhead
 
-import me.humboldt123.thunderhead.command.CommandManager
+import dev.skrub.thunderhead.command.CommandManager
 import me.zero.alpine.bus.EventBus
 import me.zero.alpine.bus.EventManager
 import net.dv8tion.jda.api.JDABuilder

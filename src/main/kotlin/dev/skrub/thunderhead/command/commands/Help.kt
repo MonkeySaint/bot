@@ -1,11 +1,11 @@
 package dev.skrub.thunderhead.command.commands
 
-import me.humboldt123.thunderhead.command.Command
-import me.humboldt123.thunderhead.command.CommandManager
-import me.humboldt123.thunderhead.info.ColorInfo
-import me.humboldt123.thunderhead.info.HelpInfo
-import me.humboldt123.thunderhead.util.MessageUtil
-import me.humboldt123.thunderhead.util.getPrefix
+import dev.skrub.thunderhead.command.Command
+import dev.skrub.thunderhead.command.CommandManager
+import dev.skrub.thunderhead.info.ColorInfo
+import dev.skrub.thunderhead.info.HelpInfo
+import dev.skrub.thunderhead.util.MessageUtil
+import dev.skrub.thunderhead.util.getPrefix
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent

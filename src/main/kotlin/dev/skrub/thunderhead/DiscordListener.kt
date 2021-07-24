@@ -1,7 +1,7 @@
 package dev.skrub.thunderhead
 
-import me.humboldt123.thunderhead.command.CommandManager
-import me.humboldt123.thunderhead.util.getPrefix
+import dev.skrub.thunderhead.command.CommandManager
+import dev.skrub.thunderhead.util.getPrefix
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter

@@ -1,8 +1,8 @@
 package dev.skrub.thunderhead.command.commands
 
-import me.humboldt123.thunderhead.command.Command
-import me.humboldt123.thunderhead.info.AskInfo
-import me.humboldt123.thunderhead.util.MessageUtil
+import dev.skrub.thunderhead.command.Command
+import dev.skrub.thunderhead.info.AskInfo
+import dev.skrub.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.Exception

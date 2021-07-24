@@ -1,7 +1,7 @@
 package dev.skrub.thunderhead.util
 
-import me.humboldt123.thunderhead.info.ColorInfo
-import me.humboldt123.thunderhead.info.EmojiInfo
+import dev.skrub.thunderhead.info.ColorInfo
+import dev.skrub.thunderhead.info.EmojiInfo
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 
