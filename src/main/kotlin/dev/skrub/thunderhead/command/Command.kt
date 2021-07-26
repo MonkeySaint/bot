@@ -19,4 +19,8 @@ abstract class Command(
         }
         return false
     }
+    fun checkArgs(args: List<String>): Boolean {
+        if (args.size == syntax.size) return true
+        return false
+    }
 }

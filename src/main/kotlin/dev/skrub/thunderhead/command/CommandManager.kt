@@ -28,11 +28,9 @@ class CommandManager(bot: Instance) {
 
 
     private fun findCommands(): ArrayList<Class<out Command>> {
-        val misc = Reflections("dev.skrub.thunderhead.command.commands.misc")
-        val moderation = Reflections("dev.skrub.thunderhead.command.commands.moderation")
+        val reflections = Reflections("dev.skrub.thunderhead.command.commands")
         val list = ArrayList<Class<out Command>>()
-        list.addAll(misc.getSubTypesOf(Command::class.java))
-        list.addAll(moderation.getSubTypesOf(Command::class.java))
+        list.addAll(reflections.getSubTypesOf(Command::class.java))
         return list
     }
 }
