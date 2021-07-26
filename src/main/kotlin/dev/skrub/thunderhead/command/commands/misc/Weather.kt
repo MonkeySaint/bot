@@ -16,9 +16,9 @@ class Weather : Command("weather", "Gets weather for specified location", listOf
             .setColor(ColorInfo.gulf)
             .setDescription(weather.current_condition[0].weatherDesc[0].value)
             .addField("Observation Time:", weather.current_condition[0].observation_time, false)
-            .addField("Precipitation:", "${weather.current_condition[0].precipMM}mm/${weather.current_condition[0].precipInches}", true)
-            .addField("Temperature:", "${weather.current_condition[0].temp_C}°C/${weather.current_condition[0].temp_F}°F", false)
-            .addField("Feels Like:", "${weather.current_condition[0].FeelsLikeC}°C/${weather.current_condition[0].FeelsLikeF}°F", false)
+            .addField("Precipitation:", "${weather.current_condition[0].precipMM}mm/${weather.current_condition[0].precipInches}", false)
+            .addField("Temperature:", "${weather.current_condition[0].temp_C}°C/${weather.current_condition[0].temp_F}°F", true)
+            .addField("Feels Like:", "${weather.current_condition[0].FeelsLikeC}°C/${weather.current_condition[0].FeelsLikeF}°F", true)
             .build()).queue()
     }
 }
