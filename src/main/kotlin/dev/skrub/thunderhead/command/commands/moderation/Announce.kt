@@ -7,10 +7,10 @@ import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 class Announce :
-    Command("announce", "Sends message to specified channel.", listOf("[channelID]", "[message]"), 2, listOf()) {
+    Command("announce", "Sends message to specified channel.", listOf("[chanel mention]", "[message]"), 2, listOf()) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
-            event.jda.getTextChannelById(args[0])?.sendMessage(args[1])?.queue() ?: event.message.channel.sendMessage(MessageUtil.error("Specified Channel cannot be fonud!")).queue()
+            event.message.mentionedChannels[0]?.sendMessage(args[1])?.queue() ?: event.message.channel.sendMessage(MessageUtil.error("Specified Channel cannot be fonud!")).queue()
         } else {
             event.message.channel.sendMessage(MessageUtil.error("You do not have the permission to do that!")).queue()
         }
