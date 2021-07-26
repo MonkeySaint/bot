@@ -9,7 +9,8 @@ Invite the old JavaScript bot here: [here](https://discord.com/oauth2/authorize?
 
 ## Self Hosting
 
-README in progress...
+Download the latest build from GitHub actions, or download the latest release.
+Run the jar file.
 
 ## To Configure the bot
 Create `setting.json` file with the content
