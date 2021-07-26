@@ -16,7 +16,7 @@ class DiscordListener(val bot: Instance) : ListenerAdapter() {
             val command = messageArray[0]
             val args = messageArray.drop(1)
             for (c in CommandManager.commands) {
-                if (c.matches(command) && c.checkArgs(args)) {
+                if (c.matches(command) && c.checkArgs(args) && !message.isWebhookMessage && !message.author.isBot) {
                     c.execute(args, event)
                 }
             }

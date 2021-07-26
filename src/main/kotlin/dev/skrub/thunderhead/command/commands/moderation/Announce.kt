@@ -6,15 +6,11 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class UnSlow :
-    Command("unslow", "Removes slowmode from the specified channel.", listOf("[channelID]"), 2, listOf()) {
+class Announce :
+    Command("announce", "Sends message to specified channel.", listOf("[channelID]", "[message]"), 2, listOf()) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
-            event.guild.channels.find { it.id == args[0] }?.manager?.setSlowmode(0)?.queue()
-                ?: kotlin.run {
-                    event.message.channel.sendMessage(MessageUtil.error("Cannot find channel!")).queue(); return
-                }
-            event.message.channel.sendMessage(MessageUtil.success("Removed Slowmode!")).queue()
+            event.jda.getTextChannelById(args[0])?.sendMessage(args[1])?.queue() ?: event.message.channel.sendMessage(MessageUtil.error("Specified Channel cannot be fonud!")).queue()
         } else {
             event.message.channel.sendMessage(MessageUtil.error("You do not have the permission to do that!")).queue()
         }
