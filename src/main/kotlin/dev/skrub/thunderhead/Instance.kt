@@ -35,7 +35,7 @@ class Instance(val token: String) {
         )
             .setAutoReconnect(true)
             .addEventListeners(dev.skrub.thunderhead.DiscordListener(this))
-        val jda = builder.build()
+        builder.build()
         println("Builder built.")
     }
 }
