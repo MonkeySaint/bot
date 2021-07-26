@@ -1,4 +1,4 @@
-package dev.skrub.thunderhead.command.commands
+package dev.skrub.thunderhead.command.commands.misc
 
 import dev.skrub.thunderhead.command.Command
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent

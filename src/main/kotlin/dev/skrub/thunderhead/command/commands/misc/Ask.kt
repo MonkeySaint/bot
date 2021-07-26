@@ -1,4 +1,4 @@
-package dev.skrub.thunderhead.command.commands
+package dev.skrub.thunderhead.command.commands.misc
 
 import dev.skrub.thunderhead.command.Command
 import dev.skrub.thunderhead.info.AskInfo

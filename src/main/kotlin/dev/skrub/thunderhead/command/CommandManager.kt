@@ -16,7 +16,7 @@ class CommandManager(bot: Instance) {
         commands = mutableListOf()
         for (m in findCommands()) {
             try {
-                val c = m.getConstructor().newInstance();
+                val c = m.getConstructor().newInstance()
                 commands.add(c)
                 bot.EVENT_BUS.subscribe(c)
                 println("Command ${c.name} (${m.name}) fetched")
@@ -28,9 +28,11 @@ class CommandManager(bot: Instance) {
 
 
     private fun findCommands(): ArrayList<Class<out Command>> {
-        val reflections = Reflections("dev.skrub.thunderhead.command.commands")
+        val misc = Reflections("dev.skrub.thunderhead.command.commands.misc")
+        val moderation = Reflections("dev.skrub.thunderhead.command.commands.moderation")
         val list = ArrayList<Class<out Command>>()
-        list.addAll(reflections.getSubTypesOf(Command::class.java))
+        list.addAll(misc.getSubTypesOf(Command::class.java))
+        list.addAll(moderation.getSubTypesOf(Command::class.java))
         return list
     }
 }
