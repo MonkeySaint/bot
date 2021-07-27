@@ -3,7 +3,6 @@ package dev.skrub.thunderhead.command.commands.moderation
 import dev.skrub.thunderhead.command.Command
 import dev.skrub.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 class Announce :
