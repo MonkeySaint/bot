@@ -6,7 +6,13 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 class Slow :
-    Command("slow", "Adds slowmode to the specified channel.", listOf("[channelMention]", "[delay(seconds)]"), 2, listOf()) {
+    Command(
+        "slow",
+        "Adds slowmode to the specified channel.",
+        listOf("[channelMention]", "[delay(seconds)]"),
+        2,
+        listOf()
+    ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
             if (args[1].toIntOrNull() != null) {

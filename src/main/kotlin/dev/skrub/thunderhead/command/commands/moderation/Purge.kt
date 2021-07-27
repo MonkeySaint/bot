@@ -9,7 +9,13 @@ import kotlin.concurrent.thread
 import kotlin.random.Random
 
 class Purge :
-    Command("purge", "Purges amounut of messages in channels", listOf("[channelMention]", "[Amount of messages to purge]"), 2, listOf()) {
+    Command(
+        "purge",
+        "Purges amounut of messages in channels",
+        listOf("[channelMention]", "[Amount of messages to purge]"),
+        2,
+        listOf()
+    ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
             val startTime = System.currentTimeMillis()
@@ -19,11 +25,12 @@ class Purge :
             thread {
                 val channel = event.message.mentionedChannels[0]
                 val messages = channel.history.retrievePast(args[1].toIntOrNull() ?: kotlin.run {
-                    event.message.channel.sendMessage(MessageUtil.error("Please enter the correct amount of messages to purge.")).queue()
+                    event.message.channel.sendMessage(MessageUtil.error("Please enter the correct amount of messages to purge."))
+                        .queue()
                     return@thread
                 }).complete()
                 try {
-                    messages.forEach{
+                    messages.forEach {
                         if (it.contentRaw != deleteMessage)
                             it.delete().complete()
                     }

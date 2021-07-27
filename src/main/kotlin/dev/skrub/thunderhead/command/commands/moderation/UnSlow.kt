@@ -9,7 +9,8 @@ class UnSlow :
     Command("unslow", "Removes slowmode from the specified channel.", listOf("[channelMention]"), 2, listOf()) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
-            event.guild.channels.find { it.id == event.message.mentionedChannels[0].id }?.manager?.setSlowmode(0)?.queue()
+            event.guild.channels.find { it.id == event.message.mentionedChannels[0].id }?.manager?.setSlowmode(0)
+                ?.queue()
                 ?: kotlin.run {
                     event.message.channel.sendMessage(MessageUtil.error("Cannot find channel!")).queue(); return
                 }
