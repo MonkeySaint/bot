@@ -6,6 +6,7 @@
 Rewrite of the Thunderhead discord bot in the Kotlin programming language.
 
 Invite the old JavaScript bot here: [here](https://discord.com/oauth2/authorize?client_id=629799045954797609&scope=bot&permissions=8)
+Invite the new bot here: [here](https://discord.com/oauth2/authorize?client_id=864667201826324493&scope=bot&permissions=49638518)
 
 ## Self Hosting
 
