@@ -2,12 +2,13 @@ package dev.skrub.thunderhead.command.commands.misc
 
 import dev.skrub.thunderhead.command.Command
 import dev.skrub.thunderhead.info.ColorInfo
+import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 class ServerInfo : Command("serverinfo", "Gets info on the current server.", listOf(), 1, listOf("server")) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        event.channel.sendMessage(
+        event.channel.sendMessageQueue(
             EmbedBuilder()
                 .setImage(event.guild.bannerUrl)
                 .setThumbnail(event.guild.iconUrl)
@@ -25,6 +26,6 @@ class ServerInfo : Command("serverinfo", "Gets info on the current server.", lis
                 .addField("Verification", event.guild.verificationLevel.toString(), false)
                 .setColor(ColorInfo.thunderhead)
                 .build()
-        ).queue()
+        )
     }
 }

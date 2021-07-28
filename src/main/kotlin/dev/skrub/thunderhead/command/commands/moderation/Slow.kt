@@ -1,6 +1,7 @@
 package dev.skrub.thunderhead.command.commands.moderation
 
 import dev.skrub.thunderhead.command.Command
+import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import dev.skrub.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
@@ -21,17 +22,17 @@ class Slow :
                         args[1].toInt()
                     )?.queue()
                         ?: kotlin.run {
-                            event.message.channel.sendMessage(MessageUtil.error("Cannot find channel!")).queue(); return
+                            event.message.channel.sendMessageQueue(MessageUtil.error("Cannot find channel!")); return
                         }
                 } catch (e: IllegalArgumentException) {
-                    event.message.channel.sendMessage(MessageUtil.error("Illegal delay seconds provided!"))
+                    event.message.channel.sendMessageQueue(MessageUtil.error("Illegal delay seconds provided!"))
                 }
-                event.message.channel.sendMessage(MessageUtil.success("Added Slowmode!")).queue()
+                event.message.channel.sendMessageQueue(MessageUtil.success("Added Slowmode!"))
             } else {
-                event.message.channel.sendMessage(MessageUtil.error("Invalid seconds!")).queue()
+                event.message.channel.sendMessageQueue(MessageUtil.error("Invalid seconds!"))
             }
         } else {
-            event.message.channel.sendMessage(MessageUtil.error("You do not have the permission to do that!")).queue()
+            event.message.channel.sendMessageQueue(MessageUtil.error("You do not have the permission to do that!"))
         }
     }
 }

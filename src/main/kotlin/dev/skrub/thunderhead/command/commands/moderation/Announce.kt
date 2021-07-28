@@ -1,6 +1,7 @@
 package dev.skrub.thunderhead.command.commands.moderation
 
 import dev.skrub.thunderhead.command.Command
+import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import dev.skrub.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
@@ -13,7 +14,7 @@ class Announce :
                 MessageUtil.error("Specified Channel cannot be fonud!")
             ).queue()
         } else {
-            event.message.channel.sendMessage(MessageUtil.error("You do not have the permission to do that!")).queue()
+            event.message.channel.sendMessageQueue(MessageUtil.error("You do not have the permission to do that!"))
         }
     }
 }

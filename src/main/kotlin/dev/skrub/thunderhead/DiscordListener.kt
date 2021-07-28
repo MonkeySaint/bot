@@ -1,6 +1,7 @@
 package dev.skrub.thunderhead
 
 import dev.skrub.thunderhead.command.CommandManager
+import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import dev.skrub.thunderhead.util.MessageUtil
 import dev.skrub.thunderhead.util.getPrefix
 import net.dv8tion.jda.api.entities.Message
@@ -20,14 +21,14 @@ class DiscordListener(val bot: Instance) : ListenerAdapter() {
                 if (c.matches(command) && !message.isWebhookMessage && !message.author.isBot) {
                     if (c.checkArgs(args)) {
                         c.execute(args, event)
+                        return
                     } else {
-                        event.message.channel.sendMessage(MessageUtil.error("Need ${c.syntax.size} arguments, provided ${args.size}!"))
-                            .queue()
+                        event.message.channel.sendMessageQueue(MessageUtil.error("Need ${c.syntax.size} arguments, provided ${args.size}!"))
+                        return
                     }
-                } else {
-                    event.message.channel.sendMessage(MessageUtil.error("Command not found!")).queue()
                 }
             }
+            event.message.channel.sendMessageQueue(MessageUtil.error("Command not found!"))
         }
     }
 }

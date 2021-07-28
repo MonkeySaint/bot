@@ -2,6 +2,7 @@ package dev.skrub.thunderhead.command.commands.misc
 
 import dev.skrub.thunderhead.command.Command
 import dev.skrub.thunderhead.info.AskInfo
+import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import dev.skrub.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.objecthunter.exp4j.ExpressionBuilder
@@ -19,7 +20,7 @@ class Ask : Command(
         try {
             // TODO: Add support for equations
             val result: Double = ExpressionBuilder(query.replace("`", "").replace("x", "*", true)).build().evaluate()
-            event.message.channel.sendMessage(MessageUtil.answer(result.toString())).queue()
+            event.message.channel.sendMessageQueue(MessageUtil.answer(result.toString()))
         } catch (e: Exception) {
             val answer = if (query.contains("scythe", true)) AskInfo.warn else AskInfo.answers.random()
             // TODO: Strip and remove of markdown

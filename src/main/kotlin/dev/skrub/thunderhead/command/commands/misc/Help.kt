@@ -4,6 +4,7 @@ import dev.skrub.thunderhead.command.Command
 import dev.skrub.thunderhead.command.CommandManager
 import dev.skrub.thunderhead.info.ColorInfo
 import dev.skrub.thunderhead.info.HelpInfo
+import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import dev.skrub.thunderhead.util.MessageUtil
 import dev.skrub.thunderhead.util.getPrefix
 import net.dv8tion.jda.api.EmbedBuilder
@@ -13,13 +14,13 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 class Help : Command("help", "A list of commands.", listOf("[command?]"), 1, listOf("commands")) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         when (args.size) {
-            0 -> event.message.channel.sendMessage(getCommandListEmbed(1)).queue()
+            0 -> event.message.channel.sendMessageQueue(getCommandListEmbed(1))
             else -> {
-                val cmd: Int? = args[0].let { it.toIntOrNull() }
+                val cmd: Int? = args[0].toIntOrNull()
                 if (cmd == null) {
-                    event.message.channel.sendMessage(getCommandEmbed(getCommand(args[0]))).queue()
+                    event.message.channel.sendMessageQueue(getCommandEmbed(getCommand(args[0])))
                 } else {
-                    event.message.channel.sendMessage(getCommandListEmbed(cmd)).queue()
+                    event.message.channel.sendMessageQueue(getCommandListEmbed(cmd))
                 }
             }
         }
