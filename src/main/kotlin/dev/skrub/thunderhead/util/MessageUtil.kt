@@ -6,16 +6,19 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 
 object MessageUtil {
-    fun error(string: String) : MessageEmbed {
+    fun error(string: String): MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.red).setTitle("${EmojiInfo.warn} $string").build()
     }
-    fun success(string: String) : MessageEmbed {
+
+    fun success(string: String): MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.green).setTitle("${EmojiInfo.check} $string").build()
     }
-    fun tell(string: String) : MessageEmbed {
+
+    fun tell(string: String): MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.discord).setTitle(string).build()
     }
-    fun answer(string: String) : MessageEmbed {
+
+    fun answer(string: String): MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.thunderhead).setTitle("${EmojiInfo.thunderhead} $string").build()
     }
 }

@@ -6,4 +6,5 @@ object HelpInfo {
         Page("Moderation Commands", "🔨"),
     )
 }
+
 class Page(val name: String, val emoji: String)

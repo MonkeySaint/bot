@@ -2,7 +2,6 @@ package dev.skrub.thunderhead.command
 
 import dev.skrub.thunderhead.Instance
 import org.reflections.Reflections
-import java.util.*
 
 
 class CommandManager(bot: Instance) {

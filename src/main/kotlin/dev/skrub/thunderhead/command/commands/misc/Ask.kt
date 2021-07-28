@@ -5,7 +5,6 @@ import dev.skrub.thunderhead.info.AskInfo
 import dev.skrub.thunderhead.util.MessageUtil
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.objecthunter.exp4j.ExpressionBuilder
-import java.lang.Exception
 import java.net.URL
 
 class Ask : Command(

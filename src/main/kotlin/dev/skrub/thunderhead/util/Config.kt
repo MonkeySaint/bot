@@ -1,8 +1,8 @@
 package dev.skrub.thunderhead.util
 
 import com.google.gson.Gson
-import java.io.File
 import dev.skrub.thunderhead.dataclass.config.Config
+import java.io.File
 
 val config: Config = Gson().fromJson(File("setting.json").readText(), Config::class.java)
 

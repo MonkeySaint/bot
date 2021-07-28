@@ -35,6 +35,7 @@ class Weather : Command("weather", "Gets weather for specified location", listOf
                     "${weather.current_condition[0].FeelsLikeC}°C/${weather.current_condition[0].FeelsLikeF}°F",
                     true
                 )
-            .build()).queue()
+                .build()
+        ).queue()
     }
 }
