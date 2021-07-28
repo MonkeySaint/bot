@@ -1,6 +1,7 @@
 package dev.skrub.thunderhead
 
 import dev.skrub.thunderhead.command.CommandManager
+import dev.skrub.thunderhead.util.MessageUtil
 import dev.skrub.thunderhead.util.getPrefix
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
@@ -16,8 +17,15 @@ class DiscordListener(val bot: Instance) : ListenerAdapter() {
             val command = messageArray[0]
             val args = messageArray.drop(1)
             for (c in CommandManager.commands) {
-                if (c.matches(command) && c.checkArgs(args) && !message.isWebhookMessage && !message.author.isBot) {
-                    c.execute(args, event)
+                if (c.matches(command) && !message.isWebhookMessage && !message.author.isBot) {
+                    if (c.checkArgs(args)) {
+                        c.execute(args, event)
+                    } else {
+                        event.message.channel.sendMessage(MessageUtil.error("Need ${c.syntax.size} arguments, provided ${args.size}!"))
+                            .queue()
+                    }
+                } else {
+                    event.message.channel.sendMessage(MessageUtil.error("Command not found!")).queue()
                 }
             }
         }

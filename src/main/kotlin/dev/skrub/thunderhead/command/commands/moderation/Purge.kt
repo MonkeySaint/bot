@@ -11,13 +11,13 @@ import kotlin.random.Random
 class Purge :
     Command(
         "purge",
-        "Purges amounut of messages in channels",
+        "Purges amount of messages in channels",
         listOf("[channelMention]", "[Amount of messages to purge]"),
         2,
         listOf()
     ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
+        if (event.message.member!!.hasPermission(Permission.MESSAGE_MANAGE)) {
             val startTime = System.currentTimeMillis()
             val deleteMessage = "deleting ${args[0]} with ${args[1]} messages... ||${Random.nextInt()}||"
             event.message.channel.sendMessage(deleteMessage).queue()
