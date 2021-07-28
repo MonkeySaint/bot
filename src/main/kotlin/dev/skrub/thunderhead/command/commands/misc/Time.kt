@@ -14,26 +14,25 @@ class Time : Command("time", "Sends the current time of some frequent timezones.
                 .setTitle("Current Time")
                 .setColor(ColorInfo.gulf)
                 .addField(
-                    "Pacific Time",
+                    "US/Pacific Time",
                     kotlin.run { TimeZone.setDefault(TimeZone.getTimeZone("GMT-7")); Date().toString() },
                     false
                 )
                 .addField(
-                    "Mountain Time",
+                    "US/Mountain Time",
                     kotlin.run { TimeZone.setDefault(TimeZone.getTimeZone("GMT-6")); Date().toString() },
                     false
                 )
                 .addField(
-                    "Central Time",
+                    "US/Central Time",
                     kotlin.run { TimeZone.setDefault(TimeZone.getTimeZone("GMT-5")); Date().toString() },
                     false
                 )
                 .addField(
-                    "Eastern Time",
+                    "US/Eastern Time",
                     kotlin.run { TimeZone.setDefault(TimeZone.getTimeZone("GMT-4")); Date().toString() },
                     false
                 )
-                .addBlankField(false)
                 .addField(
                     "Russia/Moscow",
                     kotlin.run { TimeZone.setDefault(TimeZone.getTimeZone("GMT+3")); Date().toString() },
