@@ -14,7 +14,11 @@ class ServerInfo : Command("serverinfo", "Gets info on the current server.", lis
                 .setThumbnail(event.guild.iconUrl)
                 .setTitle(event.guild.name)
                 .addField("Guild Members", event.guild.memberCount.toString(), false)
-                .addField("Owner", event.guild.owner!!.effectiveName, false)
+                .addField(
+                    "Owner",
+                    "${event.guild.owner!!.effectiveName}#${event.guild.owner!!.user.discriminator}",
+                    false
+                )
                 .addField(
                     "Channel Count",
                     (event.guild.textChannels.size + event.guild.voiceChannels.size).toString(),
