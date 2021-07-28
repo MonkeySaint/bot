@@ -21,48 +21,5 @@ Create `setting.json` file with the content
 }
 ```
 
-## Contributing
-Pull requests are welcome!
-
-## Todo
-### Commands
-#### Misc.
-- userinfo
-- serverinfo 
-- remindme
-- roleme
-- time
-- weather
-#### Music
-- play
-- stop
-- pause
-- resume
-- skip
-- volume
-- queue
-- nowplaying
-#### Economy
-- bal
-- daily
-- coinflip
-- roll
-- leaderboard
-- pay
-- rob
-- work
-- undebt
-#### Utility
-- announce
-- poll
-- say
-- kick
-- ban
-- lock
-- unlock
-- purge
-### Other
-- Finish README
-
 ## License
 [GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
