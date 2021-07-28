@@ -28,6 +28,7 @@ class UserInfo : Command("userinfo", "Gets user information", listOf("[user id/m
                 .addField("Created At:", member.timeCreated.toString(), false)
                 .addField("# Of Devices Online:", member.activeClients.size.toString(), false)
                 .addField("Owner?", member.isOwner.toString(), false)
+                .setThumbnail(member.user.avatarUrl)
                 .build()
         )
     }
