@@ -5,6 +5,7 @@ import me.zero.alpine.bus.EventBus
 import me.zero.alpine.bus.EventManager
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
+import net.dv8tion.jda.api.utils.cache.CacheFlag
 
 
 class Instance(val token: String) {
@@ -35,6 +36,11 @@ class Instance(val token: String) {
         )
             .setAutoReconnect(true)
             .addEventListeners(dev.skrub.thunderhead.DiscordListener(this))
+            .disableCache(
+                CacheFlag.CLIENT_STATUS,
+                CacheFlag.ACTIVITY,
+                CacheFlag.ONLINE_STATUS,
+            )
         builder.build()
         println("Builder built.")
     }

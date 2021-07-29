@@ -4,6 +4,7 @@ object HelpInfo {
     val page = listOf(
         Page("Misc Commands", "🤪"),
         Page("Moderation Commands", "🔨"),
+        Page("Music Commands", "🎵")
     )
 }
 
