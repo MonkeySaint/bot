@@ -13,7 +13,8 @@ class Ask : Command(
     "The Thunderhead contains near-infinite knowledge.",
     listOf("[question]", "[expresion]"),
     1,
-    listOf()
+    listOf(),
+    false
 ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val query = args.joinToString(" ")

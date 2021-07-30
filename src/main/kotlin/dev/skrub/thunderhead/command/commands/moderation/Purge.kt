@@ -15,7 +15,8 @@ class Purge :
         "Purges amount of messages in channels",
         listOf("[channelMention]", "[Amount of messages to purge]"),
         2,
-        listOf()
+        listOf(),
+        false
     ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MESSAGE_MANAGE)) {

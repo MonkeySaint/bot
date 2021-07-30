@@ -10,6 +10,11 @@ object MessageUtil {
         return EmbedBuilder().setColor(ColorInfo.red).setTitle("${EmojiInfo.warn} $string").build()
     }
 
+    fun error(string: String, e: Exception): MessageEmbed {
+        return EmbedBuilder().setColor(ColorInfo.red).setTitle("${EmojiInfo.warn} $string")
+            .addField("Stacktrace:", e.stackTraceToString(), false).build()
+    }
+
     fun success(string: String): MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.green).setTitle("${EmojiInfo.check} $string").build()
     }

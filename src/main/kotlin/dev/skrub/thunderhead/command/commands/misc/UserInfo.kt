@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class UserInfo : Command("userinfo", "Gets user information", listOf("[user id/mention]"), 1, listOf("info")) {
+class UserInfo : Command("userinfo", "Gets user information", listOf("[user id/mention]"), 1, listOf("info"), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         lateinit var member: Member
         try {

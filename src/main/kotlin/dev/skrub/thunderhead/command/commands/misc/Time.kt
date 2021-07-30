@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.util.*
 
-class Time : Command("time", "Sends the current time of some frequent timezones.", listOf(), 1, listOf()) {
+class Time : Command("time", "Sends the current time of some frequent timezones.", listOf(), 1, listOf(), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         event.message.channel.sendMessageQueue(
             EmbedBuilder()

@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 class UnSlow :
-    Command("unslow", "Removes slowmode from the specified channel.", listOf("[channelMention]"), 2, listOf()) {
+    Command("unslow", "Removes slowmode from the specified channel.", listOf("[channelMention]"), 2, listOf(), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
             event.guild.channels.find { it.id == event.message.mentionedChannels[0].id }?.manager?.setSlowmode(0)

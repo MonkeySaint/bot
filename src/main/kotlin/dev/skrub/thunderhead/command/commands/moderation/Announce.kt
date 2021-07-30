@@ -7,7 +7,14 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 class Announce :
-    Command("announce", "Sends message to specified channel.", listOf("[channel mention]", "[message]"), 2, listOf()) {
+    Command(
+        "announce",
+        "Sends message to specified channel.",
+        listOf("[channel mention]", "[message]"),
+        2,
+        listOf(),
+        false
+    ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {
             event.message.mentionedChannels[0]?.sendMessage(args[1])?.queue() ?: event.message.channel.sendMessage(

@@ -5,7 +5,7 @@ import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Avatar : Command("avatar", "Gets user avatar", listOf("[user mention/ID]"), 1, listOf("av")) {
+class Avatar : Command("avatar", "Gets user avatar", listOf("[user mention/ID]"), 1, listOf("av"), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         try {
             if (args[0].toLongOrNull() != null) {

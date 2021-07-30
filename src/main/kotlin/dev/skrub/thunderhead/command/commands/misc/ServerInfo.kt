@@ -6,7 +6,7 @@ import dev.skrub.thunderhead.util.InfixUtil.sendMessageQueue
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class ServerInfo : Command("serverinfo", "Gets info on the current server.", listOf(), 1, listOf("server")) {
+class ServerInfo : Command("serverinfo", "Gets info on the current server.", listOf(), 1, listOf("server"), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         event.channel.sendMessageQueue(
             EmbedBuilder()

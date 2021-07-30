@@ -12,7 +12,8 @@ class Slow :
         "Adds slowmode to the specified channel.",
         listOf("[channelMention]", "[delay(seconds)]"),
         2,
-        listOf()
+        listOf(),
+        false
     ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.MANAGE_CHANNEL)) {

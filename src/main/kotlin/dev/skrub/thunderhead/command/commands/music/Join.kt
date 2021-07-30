@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 
 class Join :
-    Command("join", "Joins VC", listOf(), 3, listOf("connect")) {
+    Command("join", "Joins VC", listOf(), 3, listOf("connect"), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.guild.audioManager.isConnected) {
             event.message.channel.sendMessageQueue(MessageUtil.tell("I am already in a voice channel!"))

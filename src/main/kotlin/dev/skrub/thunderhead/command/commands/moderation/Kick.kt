@@ -14,7 +14,8 @@ class Kick :
         "Kicks member from the guild",
         listOf("[MemberMention]", "[reason]"),
         2,
-        listOf()
+        listOf(),
+        false
     ) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         if (event.message.member!!.hasPermission(Permission.KICK_MEMBERS)) {

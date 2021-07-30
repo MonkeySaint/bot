@@ -8,7 +8,8 @@ abstract class Command(
     val description: String,
     val syntax: List<String>,
     val page: Int,
-    val aliases: List<String>
+    val aliases: List<String>,
+    val overrideCheck: Boolean
 ) : Listenable {
     abstract fun execute(args: List<String>, event: GuildMessageReceivedEvent)
     fun matches(string: String): Boolean {
@@ -21,6 +22,9 @@ abstract class Command(
     }
 
     fun checkArgs(args: List<String>): Boolean {
+        if (overrideCheck) {
+            return overrideCheck
+        }
         if (args.size == syntax.size) return true
         return false
     }

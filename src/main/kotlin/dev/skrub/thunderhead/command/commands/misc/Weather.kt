@@ -9,7 +9,7 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.net.URL
 
-class Weather : Command("weather", "Gets weather for specified location", listOf("location"), 1, listOf()) {
+class Weather : Command("weather", "Gets weather for specified location", listOf("location"), 1, listOf(), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val weather = Gson().fromJson(
             URL("http://wttr.in/~${args[0].replace(" ", "+")}?m&format=j1").readText(),
