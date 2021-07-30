@@ -17,5 +17,6 @@ class Volume :
             return
         }
         PlayerManager(event.channel).musicManager.scheduler.audioPlayer.volume = volume
+        event.message.channel.sendMessageQueue(MessageUtil.success("Volume now is ${args[0]}!"))
     }
 }
