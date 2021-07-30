@@ -20,7 +20,11 @@ class PlayerManager(private val textChannel: TextChannel) {
     }
 
     fun loadAndPlay(trackUrl: String) {
-        audioPlayerManager.loadItemOrdered(musicManager, trackUrl, ClassLoadResultHandler(musicManager, textChannel))
+        audioPlayerManager.loadItemOrdered(
+            getMusicManager(textChannel.guild),
+            trackUrl,
+            ClassLoadResultHandler(musicManager, textChannel)
+        )
     }
 
     init {
