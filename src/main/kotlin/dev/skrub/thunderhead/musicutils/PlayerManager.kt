@@ -6,21 +6,20 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.TextChannel
 
-class PlayerManager {
+class PlayerManager(private val textChannel: TextChannel) {
     private val musicManagers: HashMap<Long, GuildMusicManager> = HashMap()
     private val audioPlayerManager: AudioPlayerManager = DefaultAudioPlayerManager()
+    val musicManager = getMusicManager(textChannel.guild)
 
     private fun getMusicManager(guild: Guild): GuildMusicManager {
         return musicManagers.computeIfAbsent(guild.idLong) {
-            val guildMusicManager: GuildMusicManager = GuildMusicManager(audioPlayerManager)
+            val guildMusicManager = GuildMusicManager(audioPlayerManager)
             guild.audioManager.sendingHandler = guildMusicManager.audioPlayerSendHandler
             return@computeIfAbsent guildMusicManager
         }
     }
 
-    fun loadAndPlay(textChannel: TextChannel, trackUrl: String) {
-        val musicManager = getMusicManager(textChannel.guild)
-
+    fun loadAndPlay(trackUrl: String) {
         audioPlayerManager.loadItemOrdered(musicManager, trackUrl, ClassLoadResultHandler(musicManager, textChannel))
     }
 

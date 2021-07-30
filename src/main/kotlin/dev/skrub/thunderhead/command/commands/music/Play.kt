@@ -17,9 +17,9 @@ class Play :
         }
 
         if (args[0].isValidUrl()) {
-            PlayerManager().loadAndPlay(event.channel, args[0])
+            PlayerManager(event.channel).loadAndPlay(args[0])
         } else {
             event.message.channel.sendMessageQueue(MessageUtil.tell("Searching videos on youtube is not supported yet!"))
         }
-}
+    }
 }

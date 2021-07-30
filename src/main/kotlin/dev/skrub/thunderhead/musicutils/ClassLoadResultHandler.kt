@@ -16,7 +16,7 @@ class ClassLoadResultHandler(private val musicManager: GuildMusicManager, privat
     }
 
     override fun playlistLoaded(playlist: AudioPlaylist) {
-        channel.sendMessageQueue(MessageUtil.success("Track loaded!"))
+        channel.sendMessageQueue(MessageUtil.success("Playlist loaded!"))
     }
 
     override fun noMatches() {
