@@ -1,4 +1,4 @@
-# Thunderhead
+# Thunderhead [![wakatime](https://wakatime.com/badge/github/humboldt123/thunderhead.svg)](https://wakatime.com/badge/github/humboldt123/thunderhead)
 
 
 [![License](https://img.shields.io/badge/license-GPLv3-brightgreen.svg)](https://github.com/humboldt123/thunderhead/blob/main/LICENSE)
