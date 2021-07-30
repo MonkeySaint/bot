@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
 
 class Stop :
-    Command("stop", "Plays music", listOf("[link/title]"), 3, listOf(), true) {
+    Command("stop", "Stops Music", listOf(), 3, listOf(), false) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         PlayerManager(event.channel).musicManager.scheduler.audioPlayer.stopTrack()
     }
