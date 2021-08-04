@@ -24,4 +24,8 @@ abstract class Command(
         if (args.size == syntax.size) return true
         return false
     }
+
+    fun syntaxString(): String {
+        return "$name ${syntax.joinToString(" ")}"
+    }
 }

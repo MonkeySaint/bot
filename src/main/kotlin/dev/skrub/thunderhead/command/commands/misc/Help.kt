@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Help : Command("help", "A list of commands.", listOf("[command?]"), 1, listOf("commands")) {
+class Help : Command("help", "A list of commands.", listOf("[command]/[page]"), 1, listOf("commands")) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         when (args.size) {
             0 -> event.message.channel.sendMessageQueue(getCommandListEmbed(1))

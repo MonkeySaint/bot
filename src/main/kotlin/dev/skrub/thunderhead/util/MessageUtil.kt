@@ -10,12 +10,17 @@ object MessageUtil {
         return EmbedBuilder().setColor(ColorInfo.red).setTitle("${EmojiInfo.warn} $string").build()
     }
 
+    fun error(string: String, extra: String): MessageEmbed {
+        return EmbedBuilder().setColor(ColorInfo.red).setTitle("${EmojiInfo.warn} $string")
+            .addField("Extra Info", "```$extra```", false).build()
+    }
+
     fun success(string: String): MessageEmbed {
         return EmbedBuilder().setColor(ColorInfo.green).setTitle("${EmojiInfo.check} $string").build()
     }
 
     fun tell(string: String): MessageEmbed {
-        return EmbedBuilder().setColor(ColorInfo.discord).setTitle(string).build()
+        return EmbedBuilder().setColor(ColorInfo.gulf).setTitle(string).build()
     }
 
     fun answer(string: String): MessageEmbed {

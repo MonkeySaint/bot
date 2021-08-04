@@ -23,7 +23,12 @@ class DiscordListener(val bot: Instance) : ListenerAdapter() {
                         c.execute(args, event)
                         return
                     } else {
-                        event.message.channel.sendMessageQueue(MessageUtil.error("Need ${c.syntax.size} arguments, provided ${args.size}!"))
+                        event.message.channel.sendMessageQueue(
+                            MessageUtil.error(
+                                "Need ${c.syntax.size} arguments, provided ${args.size}!",
+                                c.syntaxString()
+                            )
+                        )
                         return
                     }
                 }
