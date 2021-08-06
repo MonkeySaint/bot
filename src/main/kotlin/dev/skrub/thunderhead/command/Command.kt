@@ -1,5 +1,6 @@
 package dev.skrub.thunderhead.command
 
+import dev.skrub.thunderhead.annotations.OverrideCommandArgsCheck
 import me.zero.alpine.listener.Listenable
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
@@ -21,7 +22,7 @@ abstract class Command(
     }
 
     fun checkArgs(args: List<String>): Boolean {
-        if (args.size == syntax.size) return true
+        if (args.size >= syntax.size || this::class.annotations.firstOrNull { it is OverrideCommandArgsCheck } != null) return true
         return false
     }
 

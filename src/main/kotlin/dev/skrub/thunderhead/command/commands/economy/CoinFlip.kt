@@ -12,7 +12,7 @@ class CoinFlip :
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val flipResult = Random.nextBoolean()
         val currentBalance = EconomyUtil.getBalance(event.member?.user ?: return)
-        if (currentBalance == -1L) {
+        if (currentBalance == -1) {
             event.message.channel.sendMessageQueue(MessageUtil.error("You are not registered! Please run the register command first!"))
             return
         }
@@ -32,7 +32,7 @@ class CoinFlip :
         }
 
         // this is also stupid
-        if (args[1].toLongOrNull() == null || args[1].toLong() <= 0 || args[1].toLong() > EconomyUtil.getBalance(
+        if (args[1].toIntOrNull() == null || args[1].toInt() <= 0 || args[1].toInt() > EconomyUtil.getBalance(
                 event.member?.user ?: return
             )
         ) {
@@ -53,11 +53,11 @@ class CoinFlip :
             )
         )
         if (flipResult == guess) {
-            event.message.channel.sendMessageQueue(MessageUtil.success("You won ${args[1].toLong() * 2} balance!"))
-            EconomyUtil.give(event.member?.user ?: return, args[1].toLong() * 2)
+            event.message.channel.sendMessageQueue(MessageUtil.success("You won ${args[1].toInt() * 2} balance!"))
+            EconomyUtil.give(event.member?.user ?: return, args[1].toInt() * 2)
         } else {
             event.message.channel.sendMessageQueue(MessageUtil.error("You lost ${args[1]} balance!"))
-            EconomyUtil.withdraw(event.member?.user ?: return, args[1].toLong())
+            EconomyUtil.withdraw(event.member?.user ?: return, args[1].toInt())
         }
     }
 }

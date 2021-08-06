@@ -20,7 +20,7 @@ object EconomyUtil {
         mapper.readValue(File(".economy.yaml"), Economy::class.java)
     }
 
-    fun getBalance(user: User): Long {
+    fun getBalance(user: User): Int {
         economyFromYaml.users.forEach {
             if (it.id == user.idLong) {
                 return it.balance
@@ -30,7 +30,7 @@ object EconomyUtil {
         return -1
     }
 
-    fun give(user: User, amount: Long): Boolean {
+    fun give(user: User, amount: Int): Boolean {
         economyFromYaml.users.forEach {
             if (it.id == user.idLong) {
                 it.balance += amount
@@ -41,7 +41,7 @@ object EconomyUtil {
         return false
     }
 
-    fun withdraw(user: User, amount: Long): Boolean {
+    fun withdraw(user: User, amount: Int): Boolean {
         economyFromYaml.users.forEach {
             if (it.id == user.idLong) {
                 it.balance -= amount

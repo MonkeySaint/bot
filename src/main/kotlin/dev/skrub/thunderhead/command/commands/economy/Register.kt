@@ -11,6 +11,6 @@ class Register : Command("register", "Registers user", listOf(), 3, listOf()) {
         EconomyUtil.createNewUser(
             event.member?.user
                 ?: kotlin.run { event.message.channel.sendMessageQueue(MessageUtil.error("User created")); return })
-        event.message.channel.sendMessageQueue(MessageUtil.success("User created"))
+        event.message.channel.sendMessageQueue(MessageUtil.success("User created!"))
     }
 }
