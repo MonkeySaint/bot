@@ -1,10 +1,13 @@
 package dev.skrub.thunderhead.util
 
-import com.google.gson.Gson
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import dev.skrub.thunderhead.dataclass.config.Config
 import java.io.File
 
-val config: Config = Gson().fromJson(File("setting.json").readText(), Config::class.java)
+val config: Config =
+    ObjectMapper(YAMLFactory()).registerKotlinModule().readValue((File("settings.yaml")), Config::class.java)
 
 fun getToken(): String {
     if (config.token.isNullOrEmpty())

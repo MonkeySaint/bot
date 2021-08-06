@@ -3,7 +3,6 @@ package dev.skrub.thunderhead.util
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.google.gson.GsonBuilder
 import dev.skrub.thunderhead.dataclass.economy.Economy
 import dev.skrub.thunderhead.dataclass.economy.Human
 import dev.skrub.thunderhead.dataclass.misc.BooleanOrLong
@@ -12,7 +11,6 @@ import java.io.File
 import kotlin.math.abs
 
 object EconomyUtil {
-    private val gson = GsonBuilder().setPrettyPrinting().create()
     private val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
 
     private val economyFromYaml: Economy = try {
