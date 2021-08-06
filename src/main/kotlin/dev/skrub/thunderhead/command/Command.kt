@@ -25,7 +25,7 @@ abstract class Command(
         return false
     }
 
-    fun syntaxString(): String {
+    fun makeSyntaxString(): String {
         return "$name ${syntax.joinToString(" ")}"
     }
 }

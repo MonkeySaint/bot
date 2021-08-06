@@ -1,6 +1,7 @@
 package dev.skrub.thunderhead.command
 
 import dev.skrub.thunderhead.Instance
+import dev.skrub.thunderhead.info.HelpInfo
 import org.reflections.Reflections
 
 
@@ -18,6 +19,17 @@ class CommandManager(bot: Instance) {
                 val c = m.getConstructor().newInstance()
                 commands.add(c)
                 bot.EVENT_BUS.subscribe(c)
+                when (c.page) {
+                    1 -> {
+                        HelpInfo.page[0].commands.add(c)
+                    }
+                    2 -> {
+                        HelpInfo.page[1].commands.add(c)
+                    }
+                    3 -> {
+                        HelpInfo.page[2].commands.add(c)
+                    }
+                }
                 println("Command ${c.name} (${m.name}) fetched")
             } catch (e: Exception) {
                 System.err.println(e)
