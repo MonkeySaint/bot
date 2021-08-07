@@ -33,7 +33,7 @@ class Roll : Command("roll", "Rolls a dice", listOf("[guess number(1-6)]", "[amo
                         .addField("", "You won ${args[1].toInt() * 6}!", false)
                         .build()
                 )
-                EconomyUtil.give(event.member?.user ?: return, (args[1].toInt() * 6))
+                EconomyUtil.deposit(event.member?.user ?: return, (args[1].toInt() * 6))
             } else {
                 event.message.channel.sendMessageQueue(
                     EmbedBuilder()

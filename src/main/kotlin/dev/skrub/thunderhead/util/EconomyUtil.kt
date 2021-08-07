@@ -13,12 +13,8 @@ import kotlin.math.abs
 object EconomyUtil {
     private val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
 
-    private val economyFromYaml: Economy = try {
-        mapper.readValue(File(".economy.yaml"), Economy::class.java)
-    } catch (e: Exception) {
-        createFakeUser()
-        mapper.readValue(File(".economy.yaml"), Economy::class.java)
-    }
+    var economyFromYaml: Economy
+        private set
 
     fun getBalance(user: User): Int {
         economyFromYaml.users.forEach {
@@ -30,7 +26,7 @@ object EconomyUtil {
         return -1
     }
 
-    fun give(user: User, amount: Int): Boolean {
+    fun deposit(user: User, amount: Int): Boolean {
         economyFromYaml.users.forEach {
             if (it.id == user.idLong) {
                 it.balance += amount
@@ -76,11 +72,39 @@ object EconomyUtil {
     }
 
     private fun createFakeUser() {
-        mapper.writeValue(File(".economy.yaml"), Economy(arrayListOf(Human(12345, 12345, 0))))
+        mapper.writeValue(File(".economy.yaml"), Economy(arrayListOf(Human(12345, 12345, 0, 0))))
     }
 
     fun createNewUser(user: User) {
-        economyFromYaml.users.add(Human(user.idLong, 0, (System.currentTimeMillis() / 1000) - 86400))
+        economyFromYaml.users.add(
+            Human(
+                user.idLong,
+                0,
+                (System.currentTimeMillis() / 1000) - 86400,
+                (System.currentTimeMillis() / 1000) - 86400
+            )
+        )
         save()
+    }
+
+    fun canSteal(user: User): Boolean {
+        val target = economyFromYaml.users.firstOrNull { it.id == user.idLong } ?: return false
+        println((target.lastSteal + 7200) - System.currentTimeMillis() / 1000)
+        return target.lastSteal != -1L && ((target.lastSteal + 7200) - System.currentTimeMillis() / 1000) < 0L && target.balance >= 200
+    }
+
+    fun updateRobTime(user: User): Boolean {
+        economyFromYaml.users.firstOrNull { it.id == user.idLong }?.lastSteal = (System.currentTimeMillis() / 1000)
+        save()
+        return true
+    }
+
+    init {
+        economyFromYaml = try {
+            mapper.readValue(File(".economy.yaml"), Economy::class.java)
+        } catch (e: Exception) {
+            createFakeUser()
+            mapper.readValue(File(".economy.yaml"), Economy::class.java)
+        }
     }
 }

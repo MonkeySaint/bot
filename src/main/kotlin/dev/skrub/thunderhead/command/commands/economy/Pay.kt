@@ -20,7 +20,7 @@ class Pay : Command("pay", "Pays user", listOf("[userMention/ID]", "amount"), 3,
             if (payAmount > EconomyUtil.getBalance(event.member?.user ?: return)) {
                 event.message.channel.sendMessageQueue(MessageUtil.error("You do not have enough money!")); return
             }
-            if (EconomyUtil.give(mentionedUser, payAmount)) {
+            if (EconomyUtil.deposit(mentionedUser, payAmount)) {
                 EconomyUtil.withdraw(event.member?.user ?: return, payAmount)
                 event.message.channel.sendMessageQueue(MessageUtil.success("Success! Paid ${mentionedUser.name}#${mentionedUser.discriminator} $payAmount balance!"))
             } else {

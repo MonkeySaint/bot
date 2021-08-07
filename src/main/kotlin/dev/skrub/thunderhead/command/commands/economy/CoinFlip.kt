@@ -54,7 +54,7 @@ class CoinFlip :
         )
         if (flipResult == guess) {
             event.message.channel.sendMessageQueue(MessageUtil.success("You won ${args[1].toInt() * 2} balance!"))
-            EconomyUtil.give(event.member?.user ?: return, args[1].toInt() * 2)
+            EconomyUtil.deposit(event.member?.user ?: return, args[1].toInt() * 2)
         } else {
             event.message.channel.sendMessageQueue(MessageUtil.error("You lost ${args[1]} balance!"))
             EconomyUtil.withdraw(event.member?.user ?: return, args[1].toInt())
