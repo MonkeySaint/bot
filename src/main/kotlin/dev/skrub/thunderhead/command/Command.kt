@@ -12,7 +12,7 @@ abstract class Command(
     val aliases: List<String>
 ) : Listenable {
     abstract fun execute(args: List<String>, event: GuildMessageReceivedEvent)
-    fun matches(string: String): Boolean {
+    internal fun matches(string: String): Boolean {
         if (string == name) return true
         aliases.forEach {
             if (string == it)
@@ -21,12 +21,12 @@ abstract class Command(
         return false
     }
 
-    fun checkArgs(args: List<String>): Boolean {
+    internal fun checkArgs(args: List<String>): Boolean {
         if (args.size >= syntax.size || this::class.annotations.firstOrNull { it is OverrideCommandArgsCheck } != null) return true
         return false
     }
 
-    fun makeSyntaxString(): String {
+    internal fun makeSyntaxString(): String {
         return "$name ${syntax.joinToString(" ")}"
     }
 }
